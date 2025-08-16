@@ -2,10 +2,10 @@
 
 public class Contact {
 
-    String firstName;
-    String lastName;
-    String phoneNumber;
-    String emailAddress;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String emailAddress;
 
     Contact(String firstName, String lastName, String phoneNumber, String emailAddress) {
         // Constructor logic can be added here
