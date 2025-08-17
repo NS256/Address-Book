@@ -14,14 +14,38 @@ public class Contact {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
-
-        AddressBook.createContact((firstName + " " + lastName),this);
         
     }
 
     public static boolean create(String firstName, String lastName, String phoneNo, String emailAddress){
         Contact contact = new Contact(firstName, lastName, phoneNo, emailAddress);
-
+        AddressBook.createContact(contact);
         return true;
+    }
+
+    public static String getFullName(Contact contact){
+        String fullName = contact.firstName + " " + contact.lastName;
+        return fullName;
+    }
+
+    public static String getFirstName(Contact contact){
+        return contact.firstName;
+    }
+
+    public static String getLastName(Contact contact){
+        return contact.lastName;
+    }
+
+    public static String getEmailAddress(Contact contact){
+        return contact.emailAddress;
+    }
+
+    public static String getPhoneNo(Contact contact){
+        return contact.emailAddress;
+    }
+
+    public static void updateFirstName(String newName, Contact contact){
+        contact.firstName = newName;
+        AddressBook.updateAddressBook(Contact.getFullName(contact), contact);
     }
 }
