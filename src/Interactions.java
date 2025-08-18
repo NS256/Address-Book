@@ -7,7 +7,7 @@ public class Interactions {
         boolean interactionChosen = false;
 
         do {
-            System.out.println("What would you like to do today?\n1. Search for a contact | 2. Add a new contact | 3. Update a contact | 3. Delete a contact");
+            System.out.println("What would you like to do today?\n1. Search for a contact | 2. Add a new contact | 3. Update a contact | 4. Delete a contact");
             byte userChoice = input.nextByte();
 
 
