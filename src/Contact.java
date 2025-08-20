@@ -2,6 +2,7 @@
 
 public class Contact {
 
+    //public final String[][] AVAILABLEPARAMS = {}{}, "last name", "phone number", "email address"}; 
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -9,7 +10,6 @@ public class Contact {
 
     Contact(String firstName, String lastName, String phoneNumber, String emailAddress) {
         // Constructor logic can be added here
-        System.out.println("New contact constructor called.");
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

@@ -22,7 +22,7 @@ public class AddressBook {
 
         try {
             addressBook.put(name, contact);
-            System.out.println(name + " has been added to your Address Book.");
+            System.out.println("\n" + name + " has been added to your Address Book.");
             
         } catch (Exception e) {
             System.out.println("Failed to add contact to address book.\f" + e);

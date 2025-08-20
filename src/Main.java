@@ -1,9 +1,16 @@
 public class Main {
+
+    public static boolean runAddressBook = false;
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
         System.out.println("Welcome to your Address Book!");
 
-        Interactions.selectProcess();
+        
+
+        while (runAddressBook){
+            Interactions.selectProcess();
+        }
+
 
 
 
