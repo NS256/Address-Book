@@ -21,6 +21,7 @@ public class Interactions {
                     editContact();
                     break;
                 case 4:
+                    deleteContact();
                     break;
                 case 5:
                     Main.runAddressBook = false;
@@ -109,7 +110,21 @@ public class Interactions {
     }
 
     public static void deleteContact(){
+        String contactName = promptForString("Who would you like to remove from your Address Book? ");
+        Contact contactToRemove = AddressBook.findContact(contactName);
 
+        deleteContact(contactToRemove);
+    }
+
+    public static void deleteContact(Contact contact){
+        String proceedWithDelete = promptForString("Are you wanting to delete " + contact.getFullName() + "? (Y/N): ");
+
+        if (!proceedWithDelete.toLowerCase().contains("y")){
+            System.out.println("No worries! Let's go back a step!");
+            return;
+        }
+
+        AddressBook.deleteContact(contact);
     }
 
     public static String promptForString(String message){

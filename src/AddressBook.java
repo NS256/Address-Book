@@ -44,6 +44,12 @@ public class AddressBook {
         addressBook.put(key.toLowerCase(), contact);
     }
 
+    public static void deleteContact(Contact contact){
+        String name = contact.getFullName();
+        addressBook.remove(name.toLowerCase());
+        System.out.println(name + " has been removed from your Address Book\n\n");
+    }
+
     public static Contact findContact(String searchString){
         return addressBook.get(searchString.toLowerCase());
     }
