@@ -79,23 +79,26 @@ public class Contact {
 
         this.firstName = newName;
 
-        System.out.println("Name has been set to " + this.firstName);
+        System.out.println("Name has been set to " + this.firstName + " " + this.lastName);
         AddressBook.updateAddressBookContact(this.getFullName(), this, originalKey);
     }
 
     public void updateLastName(String newName){
         String originalKey = this.getFullName();
         this.lastName = newName;
+        System.out.println("Name has been set to " + this.firstName + " " + this.lastName);
         AddressBook.updateAddressBookContact(this.getFullName(), this, originalKey);
     }
 
     public void updatePhoneNo(String newNo){
         this.phoneNumber = newNo;
+        System.out.println("Phone number has been set to " + this.phoneNumber);
         AddressBook.updateAddressBookContact(this.getFullName(), this);
     }
 
     public void updateEmail(String newEmail){
         this.emailAddress = newEmail;
+        System.out.println("Email has been set to " + this.emailAddress);
         AddressBook.updateAddressBookContact(this.getFullName(), this);
     }
 }
