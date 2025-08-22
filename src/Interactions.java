@@ -21,6 +21,7 @@ public class Interactions {
                     editContact();
                     break;
                 case 4:
+                    deleteContact();
                     break;
                 case 5:
                     Main.runAddressBook = false;
