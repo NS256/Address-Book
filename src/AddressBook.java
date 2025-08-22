@@ -13,7 +13,7 @@ public class AddressBook {
     }
 
     public static void createContact(Contact contact){
-        String name = Contact.getFullName(contact);
+        String name = contact.getFullName().toLowerCase();
 
         if(addressBook.containsKey(name)){
             System.out.print(name + " already exists in your address book, you'll need to create a different name instead.");
@@ -29,11 +29,22 @@ public class AddressBook {
         }
     }
 
-    public static void updateAddressBook(String key, Contact contact){
+    public static void updateAddressBookContact(String key, Contact contact){
+        //updating a contact field without changing key (e.g. email or phone no change.)
         addressBook.put(key, contact);
+    } 
+
+    public static void updateAddressBookContact(String key, Contact contact, String oldKey){
+        //to be used when the key needs to be updated as well as a value in the Contact (e.g. name change)
+
+        //delete the original key
+        addressBook.remove(oldKey.toLowerCase());
+
+        //add the new key
+        addressBook.put(key.toLowerCase(), contact);
     }
 
     public static Contact findContact(String searchString){
-        return addressBook.get(searchString);
+        return addressBook.get(searchString.toLowerCase());
     }
 }

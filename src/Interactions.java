@@ -18,6 +18,7 @@ public class Interactions {
                     createNewContact();
                     break;
                 case 3:
+                    editContact();
                     break;
                 case 4:
                     break;
@@ -60,6 +61,50 @@ public class Interactions {
     }
 
     public static void editContact(){
+        //method to find specific user that wants to be edited before calling the editContact method using this
+        String contactToEdit = promptForString("Who's contact would you like to update?");
+
+        Contact contact = AddressBook.findContact(contactToEdit);
+
+        editContact(contact);
+    }
+
+    public static void editContact(Contact contact){
+        //method to be used when user selects Edit contact in searchContact()
+
+        System.out.println("You're tryign to edit " + contact.getFullName());
+
+        byte paramToUpdate = Byte.parseByte(promptForString("Which field would you like to update?\n 1. First Name | 2. Last Name | 3. Phone Number | 4. Last Name\n"));
+        String newString = promptForString("And what would you like to set this field to?");
+        boolean fieldChosen;
+
+        do {
+            fieldChosen = true;
+            switch(paramToUpdate){
+                case 1:
+                    System.out.println("Update first Name chosen");
+                    contact.updateFirstName(newString);
+                    break;
+                case 2:
+                    contact.updateLastName(newString);
+                    break;
+                case 3:
+                    contact.updatePhoneNo(newString);
+                    break;
+                case 4:
+                    contact.updateEmail(newString);
+                    break;
+                default:
+                    System.out.println("Whoops! You'll need to enter a number between 1 and 4 to select a field to update.");
+                    fieldChosen = true;
+                    break;
+            } 
+        } while (!fieldChosen);
+        
+
+
+
+
 
     }
 
@@ -68,7 +113,7 @@ public class Interactions {
     }
 
     public static String promptForString(String message){
-        System.out.print(message);
+        System.out.print(message + " ");
         return input.nextLine();
     }
 }
