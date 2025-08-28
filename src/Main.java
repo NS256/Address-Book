@@ -2,6 +2,14 @@ public class Main {
 
     public static boolean runAddressBook = true;
     public static void main(String[] args) {
+        Save.createSaveFile();
+
+        if (!Save.fileExists) {
+            System.out.println("Failed to find save file... No changes will be saved.");
+        }
+
+
+        
         AddressBook addressBook = new AddressBook();
         System.out.println("Welcome to your Address Book!");
 
@@ -20,6 +28,6 @@ public class Main {
         //System.out.println(Contact.getFirstName(AddressBook.findContact("Nath Smith")));
         //Log.addLoggingDetails(Log.createLogFile(), "Error!", "Errors can and often do suck!");
 
-        System.out.println((AddressBook.findContact("Nathan Smith")).getEmailAddress());
+        //System.out.println((AddressBook.findContact("Nathan Smith")).getEmailAddress());
     }
 }
