@@ -39,7 +39,7 @@ public class Save {
         //createString to be added to CSV file
         String csvAddressBook = new String();
         //add header files to CSV string
-        csvAddressBook += "firstName,lastName,emailAddress,phoneNo\n";
+        csvAddressBook += "firstName,lastName,phoneNo,emailAddress1\n";
 
 
         for (String key : addressBook.keySet()){
@@ -72,18 +72,10 @@ public class Save {
 
         contactString += contact.getFirstName() + ",";
         contactString += contact.getLastName() + ",";
-        contactString += contact.getEmailAddress() + ",";
-        contactString += contact.getPhoneNo() + "\n";
+        contactString += contact.getPhoneNo() + ",";
+        contactString += contact.getEmailAddress() + "\n";
 
-        
-        /*String[] contactArr = new String[4];
-
-        contactArr[0] = contact.getFirstName();
-        contactArr[1] = contact.getLastName();
-        contactArr[2] = contact.getPhoneNo();
-        contactArr[3] = contact.getEmailAddress();*/
-
-        return contactString; //Arrays.toString(contactArr);
+        return contactString;
     }
 
     public static void readCSV(){

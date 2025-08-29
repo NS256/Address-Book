@@ -52,15 +52,16 @@ public class Interactions {
     }
 
     public static void printContact(Contact contact, boolean includeHeader, boolean includeLineBreak){
-        if (includeHeader) System.out.println("|  First Name   |   Last Name   | Phone Number  | Email Address |");
+        if (includeHeader) System.out.println("| First Name    | Last Name     | Phone Number  | Email Address                |");
+        if (includeHeader) System.out.println("--------------------------------------------------------------------------------");
 
-        System.out.print("| " + contact.getFirstName());
-        System.out.print("| " + contact.getLastName());
-        System.out.print("| " + contact.getPhoneNo());
-        System.out.print("| " + contact.getEmailAddress());
-        System.out.println("|");
+        System.out.print(
+            "| " + contact.getFirstName() + printSpaces(15 - (contact.getFirstName().length() + 1)) + 
+            "| " + contact.getLastName() + printSpaces(15 - (contact.getLastName().length() + 1)) + 
+            "| " + contact.getPhoneNo() + printSpaces(15 - (contact.getPhoneNo().length() + 1)) + 
+            "| " + contact.getEmailAddress() + printSpaces(30 - (contact.getEmailAddress().length() + 1)) + "|\n");
 
-        if (includeLineBreak)System.out.println("\n\n\n");
+        if (includeLineBreak)System.out.println("\n");
     }
 
     public static void searchContacts(){
@@ -156,5 +157,14 @@ public class Interactions {
     public static String promptForString(String message){
         System.out.print(message + " ");
         return input.nextLine();
+    }
+
+    public static String printSpaces(int count){
+        String spaces = "";
+
+        for (int i=0; i< count; i++){
+            spaces += " ";
+        }
+        return spaces;
     }
 }
