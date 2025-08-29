@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interactions {
@@ -8,22 +8,25 @@ public class Interactions {
         boolean interactionChosen = false;
 
         do {
-            System.out.println("What would you like to do today?\n1. Search for a contact | 2. Add a new contact | 3. Update a contact | 4. Delete a contact | 5. Exit");
+            System.out.println("What would you like to do today?\n1. View address book | 2. Search for a contact | 3. Add a new contact | 4. Update a contact | 5. Delete a contact | 6. Exit");
             byte userChoice = Byte.parseByte(input.nextLine());
 
             switch (userChoice){
-                case 1:
+                case 1: 
+                    printAllContacts();
                     break;
                 case 2:
-                    createNewContact();
                     break;
                 case 3:
-                    editContact();
+                    createNewContact();
                     break;
                 case 4:
-                    deleteContact();
+                    editContact();
                     break;
                 case 5:
+                    deleteContact();
+                    break;
+                case 6:
                     Main.runAddressBook = false;
                     break;
                 default:
@@ -35,6 +38,29 @@ public class Interactions {
     } while (!interactionChosen);
 
 
+    }
+
+    public static void printAllContacts(){
+        ArrayList<Contact> allContacts = AddressBook.getAllContacts();
+
+        //print table headers
+        for(int i = 0; i < allContacts.size(); i++ ){
+            printContact(allContacts.get(i),(i==0),(i == allContacts.size() - 1));
+        }
+
+        System.out.println("\n\n\n");
+    }
+
+    public static void printContact(Contact contact, boolean includeHeader, boolean includeLineBreak){
+        if (includeHeader) System.out.println("|  First Name   |   Last Name   | Phone Number  | Email Address |");
+
+        System.out.print("| " + contact.getFirstName());
+        System.out.print("| " + contact.getLastName());
+        System.out.print("| " + contact.getPhoneNo());
+        System.out.print("| " + contact.getEmailAddress());
+        System.out.println("|");
+
+        if (includeLineBreak)System.out.println("\n\n\n");
     }
 
     public static void searchContacts(){
