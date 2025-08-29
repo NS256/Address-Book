@@ -1,4 +1,5 @@
 //import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class AddressBook {
@@ -12,6 +13,16 @@ public class AddressBook {
         System.out.println("Address Book cleared.");
 
         Save.updateSaveFile(addressBook);
+    }
+
+    public static ArrayList<Contact> getAllContacts() {
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
+
+        for (String key : addressBook.keySet()){
+            Contact contact = findContact(key);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 
     public static void createContact(Contact contact){
@@ -64,4 +75,5 @@ public class AddressBook {
         return addressBook.get(searchString.toLowerCase());
 
     }
+
 }
