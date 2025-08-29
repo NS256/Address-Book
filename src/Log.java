@@ -31,7 +31,7 @@ public class Log {
         }        
     }
 
-    public static void addLoggingDetails(String filePath,String exception, String extraErrorDetails){
+    public static void addLoggingDetails(String filePath,IOException exception, String extraErrorDetails){
         try {
             FileWriter updateLog = new FileWriter(filePath);
             updateLog.write(exception + "\n\n" + extraErrorDetails);

@@ -9,6 +9,7 @@ public class Contact {
     private String lastName;
     private String phoneNumber;
     private String emailAddress;
+    //may add a LocalDateTime field to reflect when a contact was created/last updated - perhaps both
 
     Contact(String firstName, String lastName, String phoneNumber, String emailAddress) {
         // Constructor logic can be added here

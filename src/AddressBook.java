@@ -10,6 +10,8 @@ public class AddressBook {
     public void clearAddressBook() {
         addressBook.clear();    
         System.out.println("Address Book cleared.");
+
+        Save.updateSaveFile(addressBook);
     }
 
     public static void createContact(Contact contact){
@@ -27,11 +29,15 @@ public class AddressBook {
         } catch (Exception e) {
             System.out.println("Failed to add contact to address book.\f" + e);
         }
+
+        Save.updateSaveFile(addressBook);
     }
 
     public static void updateAddressBookContact(String key, Contact contact){
         //updating a contact field without changing key (e.g. email or phone no change.)
         addressBook.put(key, contact);
+
+        Save.updateSaveFile(addressBook);
     } 
 
     public static void updateAddressBookContact(String key, Contact contact, String oldKey){
@@ -42,15 +48,20 @@ public class AddressBook {
 
         //add the new key
         addressBook.put(key.toLowerCase(), contact);
+
+        Save.updateSaveFile(addressBook);
     }
 
     public static void deleteContact(Contact contact){
         String name = contact.getFullName();
         addressBook.remove(name.toLowerCase());
         System.out.println(name + " has been removed from your Address Book\n\n");
+
+        Save.updateSaveFile(addressBook);
     }
 
     public static Contact findContact(String searchString){
         return addressBook.get(searchString.toLowerCase());
+
     }
 }
