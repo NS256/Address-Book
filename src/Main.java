@@ -6,8 +6,9 @@ public class Main {
 
         if (!Save.fileExists) {
             System.out.println("Failed to find save file... No changes will be saved.");
+        } else {
+            Save.readCSV();
         }
-
 
         
         AddressBook addressBook = new AddressBook();

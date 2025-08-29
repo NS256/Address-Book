@@ -1,7 +1,8 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Save {
@@ -9,7 +10,8 @@ public class Save {
     private static File saveFile;
 
     public static void createSaveFile(){
-        LocalDateTime currentDateTime = LocalDateTime.now();
+        // may use local date time later to show when file was created
+        //LocalDateTime currentDateTime = LocalDateTime.now();
         
 
         try {
@@ -32,7 +34,7 @@ public class Save {
     public static void updateSaveFile(TreeMap<String, Contact> addressBook){
 
         //convert the contacts inside address books to string so they can be saved
-        TreeMap<String,String> stringedAddressBook = new TreeMap<String,String>();
+        //TreeMap<String,String> stringedAddressBook = new TreeMap<String,String>();
 
         //createString to be added to CSV file
         String csvAddressBook = new String();
@@ -82,6 +84,34 @@ public class Save {
         contactArr[3] = contact.getEmailAddress();*/
 
         return contactString; //Arrays.toString(contactArr);
+    }
+
+    public static void readCSV(){
+        ArrayList<String> csvContents = new ArrayList<String>();
+
+        try {
+            Scanner readCSV = new Scanner(saveFile);
+            while(readCSV.hasNextLine()){
+                csvContents.add(readCSV.nextLine());
+            }
+            readCSV.close();
+
+        } catch (IOException e) {
+            String message = "Failed to read AddressBook File, any existing contacts will be unavailable...";
+            System.out.println(message);
+            String logFile = Log.createLogFile();
+            Log.addLoggingDetails(logFile, e, message);
+        }
+
+        System.out.println(csvContents);
+
+        for (String row : csvContents){
+            if (row.contains("firstName,")) continue;
+            String[] contactDetails = row.split(",");
+
+            Contact.create(contactDetails[0], contactDetails[1], contactDetails[2], contactDetails[3]);
+        }
+
     }
 
     /*public static TreeMap<String,Contact> loadSaveFile(){
