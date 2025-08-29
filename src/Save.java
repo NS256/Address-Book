@@ -103,8 +103,6 @@ public class Save {
             Log.addLoggingDetails(logFile, e, message);
         }
 
-        System.out.println(csvContents);
-
         for (String row : csvContents){
             if (row.contains("firstName,")) continue;
             String[] contactDetails = row.split(",");
